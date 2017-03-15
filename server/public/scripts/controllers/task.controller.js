@@ -4,6 +4,7 @@ myApp.controller('TaskController', ['TaskFactory', function(TaskFactory){
   var self = this;
   self.newTask = {};
   self.taskList = TaskFactory.allTasks;
+  TaskFactory.getTasks();   // This one is here to load all data when controller is started
 
   self.addTask = function() {
     TaskFactory.addTask(self.newTask);

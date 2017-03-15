@@ -3,7 +3,7 @@ myApp.factory('TaskFactory', ['$http', function($http) {
 
   var factoryTasks = { list: [] };
 
-  getTasks();
+  // getTasks(); // This one was here to load all data when factory was started
 
   function getTasks() {
     $http({
@@ -68,7 +68,7 @@ myApp.factory('TaskFactory', ['$http', function($http) {
   // this is the public API, if it's not in here, your controller won't see it
   return {
     allTasks: factoryTasks,
-    updateTasks: getTasks,
+    getTasks: getTasks,
     addTask: addTask,
     deleteTask: deleteTask,
     completeTask: completeTask,
