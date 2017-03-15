@@ -21,4 +21,8 @@ myApp.controller('TaskController', ['TaskFactory', function(TaskFactory){
     TaskFactory.uncompleteTask(taskId);
   }
 
+  self.updateTask = function(task) {
+    TaskFactory.updateTask(task);
+  }
+
 }]);
