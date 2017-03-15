@@ -5,25 +5,18 @@
   <!-- // tc.taskList.list =  [{name: 'sleep', id: 1}, {name: 'wake up', id: 2}] -->
 
 <!-- todoList.html -->
-<label>New Task</label>
-<input ng-model="tc.newTask.taskName">
-<input ng-model="tc.newTask.description">
-<button ng-click="tc.addTask()">Add Task</button>
-<div ng-repeat="task in tc.taskList.list" ng-class="{complete: task.status, active: !task.status}" class="row col-xs-12">
-  <!-- {{task.name}} and the id number is {{task.id}} -->
-  <span class="col-xs-3"><input type="text" ng-model="task.name"></span>
-  <span class="col-xs-3"><input type="text" ng-model="task.description"> </span>
-  <span class="col-xs-3">
-    <button ng-click="tc.updateTask(task)" class="btn btn-primary">Save</button>
-  </span>
-  <!-- <span class="col-xs-3" ng-hide="task.status"> -->
-    <span class="col-xs-3" >
-    <button ng-click="tc.completeTask(task._id)" class="btn btn-primary">Complete</button>
-  <!-- </span>
-  <span class="col-xs-3" ng-show="task.status"> -->
-    <button ng-click="tc.uncompleteTask(task._id)" class="btn btn-info">Uncomplete</button>
-  <!-- </span>
-  <span class="col-xs-3"> -->
-    <button ng-click="tc.deleteTask(task._id)" class="btn btn-danger">Delete</button>
-  </span>
-</div>
+<table class="table">
+  <thead>
+    <th><input class="form-control" ng-model="tc.newTask.taskName" placeholder="Task"></th>
+    <th><input class="form-control" ng-model="tc.newTask.description" placeholder="Description"></th>
+    <th><button class="btn btn-success" ng-click="tc.addTask()">Add Task</button></th>
+  </thead>
+  <tr ng-repeat="task in tc.taskList.list" ng-class="{complete: task.status, active: !task.status}">
+    <td><input class="form-control" type="text" ng-model="task.name"></td>
+    <td><input class="form-control" type="text" ng-model="task.description"></td>
+    <td><button ng-click="tc.updateTask(task)" class="btn btn-primary">Save</button></td>
+    <td ng-hide="task.status"><button ng-click="tc.completeTask(task._id)" class="btn btn-primary">Complete</button></td>
+    <td ng-show="task.status"><button ng-click="tc.uncompleteTask(task._id)" class="btn btn-info">Uncomplete</button></td>
+    <td><button ng-click="tc.deleteTask(task._id)" class="btn btn-danger">Delete</button></td>
+</tr>
+</table>
