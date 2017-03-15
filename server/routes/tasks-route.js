@@ -25,7 +25,8 @@ router.post('/', function(req, res) {
   var taskObject = req.body;
 
   var addedTask = new Task({
-    name: taskObject.taskName
+    name: taskObject.taskName,
+    description: taskObject.description
   });
 
   // db query
@@ -119,8 +120,9 @@ router.put('/:id', function(req, res) {
   Task.findByIdAndUpdate(
     {_id: taskToUpdateId},
     {
-      $set: {name: taskObject.name}
+      $set: {name: taskObject.name, description: taskObject.description}
     },
+
     function(err, result) {
       if(err) {
         console.log('Error completing task:', err);
